@@ -1,23 +1,28 @@
+// EXERCICE 1
 function compterChars(str) {
     let nbChar = str.length
     return "La phrase \"" + str + "\" contient " + nbChar + " caractères."
 }
-
+// EXERCICE 2
 function compterMots(str) {
     let nbMot = (str.split(' ')).length
     return "La phrase \"" + str + "\" contient " + nbMot + " mots."
 }
 
+
+// EXERCICE 3
 function remplacerMot(str, wordToChange, newWord) {
     let newStr = str.replace(wordToChange, newWord)
     return str + "\n" + newStr
 }
 
+
+// EXERCICE 4
 function isPalindrome(str) {
     let strSE = str.toLowerCase().split(' ').join('')
     let strISE = strSE.split('').reverse().join('')
 
-    if(strSE == strISE){
+    if(strSE === strISE){
         return "La phrase \"" + str + "\" est un palindrome"
     }
     else{
@@ -25,6 +30,8 @@ function isPalindrome(str) {
     }
 }
 
+
+// EXERCICE 5
 function francToEuro(nb) {
     let converted = (nb / 6.55957).toFixed(2)
     return "Montant en francs : " + nb + "\n" + nb + " francs = " + converted + " €"
@@ -35,12 +42,12 @@ function francToEuro(nb) {
 function facture(prixHT, quant, tva) {
     let montantHT = prixHT * quant
     let montantTVA = montantHT * tva
-    let total = (montantHT + montantTVA).toFixed(2)
+    let total = (montantHT + montantTVA)
     let str = ""
     str += "Prix unitaire de l'article : " + prixHT + " € \n"
     str += "Quantité : " + quant + "\n"
     str += "Taux de TVA : " + tva + "\n"
-    str += "\nLe montant de la facture à régler est de : " + total + " €"
+    str += "\nLe montant de la facture à régler est de : " + total.toFixed(2) + " €"
     return str
 }
 
@@ -60,7 +67,7 @@ function categorie(age) {
                     return "L'enfant qui a " + age + " ans appartient à la catégorie \"Poussin\"."
                 }
                     else {
-                        return "Si la catégorie n'est pas gérée, merci de le préciser."
+                        return "Trop jeune !"
                     }
 }
 
@@ -92,7 +99,7 @@ function renduMonnaie(apayer, versement) {
     str += "***************************************\n"
     str += "Rendu de monnaie : \n"
     let count = 0
-    let i = 100
+    let i = 200
 
     while(i != 2) {
         count = 0
@@ -104,6 +111,9 @@ function renduMonnaie(apayer, versement) {
             str += count + " billets de " + i + " € -- "
         }
         switch(i){
+            case 200 :
+                i = 100;
+                break;
             case 100 :
                 i = 50;
                 break;
@@ -161,3 +171,4 @@ function renduMonnaie(apayer, versement) {
 }
 
 
+// EXERCICE 11
