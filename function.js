@@ -1,21 +1,21 @@
 function compterChars(str) {
-    var nbChar = str.length
+    let nbChar = str.length
     return "La phrase \"" + str + "\" contient " + nbChar + " caractères."
 }
 
 function compterMots(str) {
-    var nbMot = (str.split(' ')).length
+    let nbMot = (str.split(' ')).length
     return "La phrase \"" + str + "\" contient " + nbMot + " mots."
 }
 
 function remplacerMot(str, wordToChange, newWord) {
-    var newStr = str.replace(wordToChange, newWord)
+    let newStr = str.replace(wordToChange, newWord)
     return str + "\n" + newStr
 }
 
 function isPalindrome(str) {
-    var strSE = str.toLowerCase().split(' ').join('')
-    var strISE = strSE.split('').reverse().join('')
+    let strSE = str.toLowerCase().split(' ').join('')
+    let strISE = strSE.split('').reverse().join('')
 
     if(strSE == strISE){
         return "La phrase \"" + str + "\" est un palindrome"
@@ -26,17 +26,22 @@ function isPalindrome(str) {
 }
 
 function francToEuro(nb) {
-    var converted = (nb / 6.55957).toFixed(2)
-    return "Montant en francs : " + nb + "\n(doit y avoir un retour chariot ici...)" + nb + " francs = " + converted + " €"
+    let converted = (nb / 6.55957).toFixed(2)
+    return "Montant en francs : " + nb + "\n" + nb + " francs = " + converted + " €"
 }
 
 
 // EXERCICE 6
 function facture(prixHT, quant, tva) {
-    var montantHT = prixHT * quant
-    var montantTVA = montantHT * tva
-    var total = (montantHT + montantTVA).toFixed(2)
-    return "Prix unitaire de l'article : " + prixHT + " € " + "\nQuantité : " + quant + "\nTaux de TVA : " + tva + "\nLe montant de la facture à régler est de : " + total + " €"
+    let montantHT = prixHT * quant
+    let montantTVA = montantHT * tva
+    let total = (montantHT + montantTVA).toFixed(2)
+    let str = ""
+    str += "Prix unitaire de l'article : " + prixHT + " € \n"
+    str += "Quantité : " + quant + "\n"
+    str += "Taux de TVA : " + tva + "\n"
+    str += "\nLe montant de la facture à régler est de : " + total + " €"
+    return str
 }
 
 
@@ -62,11 +67,11 @@ function categorie(age) {
 
 // EXERCICE 8
 function tableMultiplication(nb) {
-    var str = "Table de " + nb + " :\n"
-    for(var i = 1; i <= 10; i++){
+    let str = "Table de " + nb + " :\n"
+    for(let i = 1; i <= 10; i++){
         str += nb + " &times; " + i + " = " + nb*i + "\n";
     }
-    console.log(str)
+    return str;
 }
 
 
@@ -77,49 +82,82 @@ function isImposable(age, sexe) {
     }
 }
 
-console.log(isImposable(32, "f"))
-
 
 // EXERCICE 10
 function renduMonnaie(apayer, versement) {
-    var arendre = versement - apayer
-    var dix = Math.floor(arendre / 10)
-    var cinq = Math.floor((arendre - (dix*10)) / 5)
-    var deux = Math.floor((arendre - (cinq*5)) / 2)
-    var un = Math.floor((arendre - (deux*2)) / 1)
+    let arendre = versement - apayer
+    let str = "Montant à payer : " + apayer + " € \n"
+    str += "Montant versé : " + versement + " € \n"
+    str += "A rendre : " + arendre + " € \n"
+    str += "***************************************\n"
+    str += "Rendu de monnaie : \n"
+    let count = 0
+    let i = 100
 
-    str = "Montant à payer : " + apayer + " €\nMontant versé : " + versement + " €\nA rendre : " + arendre + " €\n********************************\nRendue de monnaie :\n"
-    if(dix > 1){
-        str += dix + " billets de 10 € - "
-    }
-    else {
-        str += dix + " billet de 10 € - "
+    while(i != 2) {
+        count = 0
+        if(arendre >= i) {
+            while(arendre >= i) {
+                arendre -= i
+                count += 1
+            }
+            str += count + " billets de " + i + " € -- "
+        }
+        switch(i){
+            case 100 :
+                i = 50;
+                break;
+            case 50 :
+                i = 20;
+                break;
+            case 20 :
+                i = 10;
+                break;
+            case 10 :
+                i = 5;
+                break;
+            case 5 :
+                i = 2;
+                break;
+        }
     }
     
-
-    if(cinq > 1){
-        str += cinq + " billets de 5 € - "
+    while(i != 0){
+        count = 0
+        if(arendre >= i) {
+            while(arendre >= i) {
+                arendre -= i
+                count += 1
+            }
+            str += count + " pièces de " + i + " € -- "
+        }
+        switch(i){
+            case 2 :
+                i = 1;
+                break;
+            case 1 :
+                i = 0.50;
+                break;
+            case 0.5 :
+                i = 0.20;
+                break;
+            case 0.2 :
+                i = 0.10;
+                break;
+            case 0.1 :
+                i = 0.05;
+                break;
+            case 0.05 :
+                i = 0.02;
+                break;
+            case 0.02 :
+                i = 0.01;
+                break;
+            default :
+                i = 0;
+        }
     }
-    else {
-        str += cinq + " billet de 5 € - "
-    }
-
-
-    if(deux > 1){
-        str += deux + " pièces de 2 € - "
-    }
-    else {
-        str += deux + " pièce de 2 € - "
-    }
-
-    if(un > 1){
-        str += un + " pièces de 1 € - "
-    }
-    else {
-        str += un + " pièce de 1 € - "
-    }
-
-    return str;
+    return str
 }
 
-console.log(renduMonnaie(152, 200))
+
