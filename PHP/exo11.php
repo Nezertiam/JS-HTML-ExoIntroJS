@@ -1,4 +1,4 @@
-<h1>Exercice 1</h1>
+<h1>Exercice 11</h1>
 <p>
     Initialiser un tableau de x marques de voitures. Ecrire un algorithme permettant de parcourir ce
     tableau et d’en afficher le contenu (une marque de voiture par ligne). Il est également demandé
@@ -11,9 +11,16 @@
 <?php
 
     function affTableau($tab){
-
+        foreach($tab as $marques) {
+            echo "<li>".$marques."</li>";
+        }
     }
+    $tabVoitures = ["Peugeot", "Renault", "BMW", "Mercedes"];
 
-    $tabVoitures = ["Peugeot", "Renault"]
-    
 ?>
+<h5>Il y a <?php echo count($tabVoitures) ?> marques de voitures dans le tableau :</h5>
+<ul>
+    <?php
+        affTableau($tabVoitures);
+    ?>
+</ul>
