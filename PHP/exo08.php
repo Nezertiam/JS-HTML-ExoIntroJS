@@ -9,14 +9,26 @@
 
 <?php
 
-    function tableMultiplication($nb) {
+    function tableMultiplicationFor($nb) {
         $resultat = "Table de $nb :<br>";
         for($i = 1; $i <= 10; $i++) {
-            $resultat = $resultat."$nb × $i = ".$nb*$i."<br>";
+            $resultat .= "$nb × $i = ".$nb*$i."<br>";
         }
         return $resultat;
     }
 
-    echo tableMultiplication(8);
+    echo tableMultiplicationFor(8);
+
+    function tableMultiplicationWhile($nb) {
+        $resultat = "Table de $nb :<br>";
+        $i = 1;
+        while($i <= 10) {
+            $resultat .= "$nb × $i = ".$nb*$i."<br>";
+            $i++;
+        }
+        return $resultat;
+    }
+
+    echo TableMultiplicationWhile(7);
 
 ?>

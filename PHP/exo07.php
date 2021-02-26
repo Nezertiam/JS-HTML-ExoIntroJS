@@ -20,24 +20,50 @@
             $resultat = "L'enfant qui a $age ans est trop jeune pour concourir.";
         }
         else if(6 <= $age && $age < 8) {
-            $resultat = $resultat."« Poussin »";
+            $resultat .= "« Poussin »";
         }
         else if(8 <= $age && $age < 10) {
-            $resultat = $resultat."« Pupille »";
+            $resultat .= "« Pupille »";
         }
         else if(10 <= $age && $age < 12) {
-            $resultat = $resultat."« Minime »";
+            $resultat .= "« Minime »";
         }
         else if($age >= 12) {
-            $resultat = $resultat."« Cadet »";
+            $resultat .= "« Cadet »";
         }
         else {
             $resultat = "L'age rentré n'est pas valide.";
         }
 
-        return $resultat;
+        return $resultat."<br>";
     }
 
     echo categorieEnfant(1);
+
+    function categorieEnfantBis($age) {
+        $resultat = "L'enfant qui a $age appartient à la catégorie ";
+        if($age >= 12) {
+            $resultat .= "« Cadet »";
+        }
+        elseif($age >= 10) {
+            $resultat .= "« Minime »";
+        }
+        elseif($age >= 8) {
+            $resultat .= "« Pupille »";
+        }
+        elseif($age >= 6) {
+            $resultat .= "« Poussin »";
+        }
+        elseif($age >= 0) {
+            $resultat = "L'enfant qui a $age ans est trop jeune pour concourir.";
+        }
+        elseif($age >= 6) {
+            $resultat = "L'age rentré n'est pas valide.";
+        }
+
+        return $resultat."<br>";
+    }
+
+    echo categorieEnfant(7);
 
 ?>

@@ -90,8 +90,136 @@
             }
         }
 
-        return trim($resultat, " -- ");
+        return trim($resultat, " -- ")."<br><br>";
     }
 
     echo coupures(152, 200);
+
+    function coupuresbis($aPayer, $versement) {
+        $resultat = "Montant à payer : $aPayer €<br>";
+        $resultat .= "Montant versé : $versement €<br>";
+
+        $aRendre = $versement - $aPayer;
+
+        $resultat .="A rendre : $aRendre €<br>";
+        $resultat .="*************************************<br>";
+        $resultat .="Rendue de monnaie :<br>";
+
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 200);
+            $aRendre -= $count * 200;
+            if($count != 0) {
+                $resultat .= "$count billets de 200€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 100);
+            $aRendre -= $count * 100;
+            if($count != 0) {
+                $resultat .= "$count billets de 100€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 50);
+            $aRendre -= $count * 50;
+            if($count != 0) {
+                $resultat .= "$count billets de 50€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 20);
+            $aRendre -= $count * 20;
+            if($count != 0) {
+                $resultat .= "$count billets de 20€ -- ";
+           }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 10);
+            $aRendre -= $count * 10;
+            if($count != 0) {
+                $resultat .= "$count billets de 10€ -- ";
+           }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 5);
+            $aRendre -= $count * 5;
+            if($count != 0) {
+                $resultat .= "$count billets de 5€ -- ";
+            }
+          }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 2);
+            $aRendre -= $count * 2;
+            if($count != 0) {
+                $resultat .= "$count billets de 2€ -- ";
+            }
+        }
+
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 1);
+            $aRendre -= $count * 1;
+            if($count != 0) {
+                $resultat .= "$count billets de 1€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.5);
+            $aRendre -= $count * 0.5;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.50€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.20);
+            $aRendre -= $count * 0.20;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.20€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.10);
+            $aRendre -= $count * 0.10;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.10€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.05);
+            $aRendre -= $count * 0.05;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.05€ -- ";
+            }  
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.02);
+            $aRendre -= $count * 0.02;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.02€ -- ";
+            }
+        }
+        
+        if($aRendre != 0) {
+            $count = intdiv($aRendre, 0.01);
+            $aRendre -= $count * 0.01;
+            if($count != 0) {
+                $resultat .= "$count billets de 0.01€ -- ";
+            }
+        }
+        
+
+        return trim($resultat, " -- ")."<br><br>";
+    }
+
+    echo coupuresbis(152, 200);
 ?>
