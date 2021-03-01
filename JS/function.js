@@ -13,7 +13,7 @@ function compterMots(str) {
 // EXERCICE 3
 function remplacerMot(str, wordToChange, newWord) {
     let newStr = str.replace(wordToChange, newWord)
-    return str + "\n" + newStr
+    return str + "<br>\n" + newStr
 }
 
 
@@ -34,7 +34,7 @@ function isPalindrome(str) {
 // EXERCICE 5
 function francToEuro(nb) {
     let converted = (nb / 6.55957).toFixed(2)
-    return "Montant en francs : " + nb + "\n" + nb + " francs = " + converted + " €"
+    return "Montant en francs : " + nb + "<br>\n" + nb + " francs = " + converted + " €"
 }
 
 
@@ -44,10 +44,10 @@ function facture(prixHT, quant, tva) {
     let montantTVA = montantHT * tva
     let total = (montantHT + montantTVA)
     let str = ""
-    str += "Prix unitaire de l'article : " + prixHT + " € \n"
-    str += "Quantité : " + quant + "\n"
-    str += "Taux de TVA : " + tva + "\n"
-    str += "\nLe montant de la facture à régler est de : " + total.toFixed(2) + " €"
+    str += "Prix unitaire de l'article : " + prixHT + " € <br>\n"
+    str += "Quantité : " + quant + "<br>\n"
+    str += "Taux de TVA : " + tva + "<br>\n"
+    str += "<br>\nLe montant de la facture à régler est de : " + total.toFixed(2) + " €"
     return str
 }
 
@@ -74,9 +74,9 @@ function categorie(age) {
 
 // EXERCICE 8
 function tableMultiplication(nb) {
-    let str = "Table de " + nb + " :\n"
+    let str = "Table de " + nb + " :<br>\n"
     for(let i = 1; i <= 10; i++){
-        str += nb + " &times; " + i + " = " + nb*i + "\n";
+        str += nb + " &times; " + i + " = " + nb*i + "<br>\n";
     }
     return str;
 }
@@ -85,7 +85,7 @@ function tableMultiplication(nb) {
 // EXERCICE 9
 function isImposable(age, sexe) {
     if(((sexe === "F" || sexe ==="f") && 18 <= age && age <= 35) || ((sexe === "H" || sexe ==="h") && 20 <= age)) {
-        return "Age : " + age +"\nSexe : " + sexe.toUpperCase() + "\nLa personne est imposable."
+        return "Age : " + age +"<br>\nSexe : " + sexe.toUpperCase() + "<br>\nLa personne est imposable."
     }
 }
 
@@ -93,11 +93,11 @@ function isImposable(age, sexe) {
 // EXERCICE 10
 function renduMonnaie(apayer, versement) {
     let arendre = versement - apayer
-    let str = "Montant à payer : " + apayer + " € \n"
-    str += "Montant versé : " + versement + " € \n"
-    str += "A rendre : " + arendre + " € \n"
-    str += "***************************************\n"
-    str += "Rendu de monnaie : \n"
+    let str = "Montant à payer : " + apayer + " € <br>\n"
+    str += "Montant versé : " + versement + " € <br>\n"
+    str += "A rendre : " + arendre + " € <br>\n"
+    str += "***************************************<br>\n"
+    str += "Rendu de monnaie : <br>\n"
     let count = 0
     let i = 200
 
@@ -172,3 +172,25 @@ function renduMonnaie(apayer, versement) {
 
 
 // EXERCICE 11
+function affichageTableau(tab) {
+    let str = ""
+    tab.forEach(element => str += "- " + element + "<br>\n")
+    return str;
+}
+
+
+// Exercice 12
+function salut() {
+    let tab = {"Mickaël" : "FRA", "Virgile" : "ESP", "Marie-Claire" : "ENG", "Mawyn" : "FRA"}
+    let tabLangues = {"FRA" : "Salut", "ESP" : "Hola", "ENG" : "Hello"}
+    let str = ""
+    
+    for (const prop in tab) {
+        let langue = tab[prop]
+        if (langue in tabLangues) {
+            str += tabLangues[langue] + " " + prop +"<br>\n"
+        }
+    }
+
+    return str
+}
