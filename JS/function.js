@@ -181,16 +181,42 @@ function affichageTableau(tab) {
 
 // Exercice 12
 function salut() {
-    let tab = {"Mickaël" : "FRA", "Virgile" : "ESP", "Marie-Claire" : "ENG", "Mawyn" : "FRA"}
-    let tabLangues = {"FRA" : "Salut", "ESP" : "Hola", "ENG" : "Hello"}
+    let personnes = [
+        {"nom" : "Mickaël", "langue" : "FRA"}, 
+        {"nom" : "Virgile", "langue" : "ESP"}, 
+        {"nom" : "Marie-Claire", "langue" : "ENG"}, 
+        {"nom" : "Mawyn", "langue" : "FRA"}
+    ]
+
+    let langues = {"FRA" : "Salut", "ESP" : "Hola", "ENG" : "Hello"}
     let str = ""
-    
-    for (const prop in tab) {
-        let langue = tab[prop]
-        if (langue in tabLangues) {
-            str += tabLangues[langue] + " " + prop +"<br>\n"
+
+    personnesTri = personnes.sort(compare)
+    console.log(personnes)
+    console.log(personnesTri)
+
+    function compare(a, b) {
+        const nomA = a.nom.toUpperCase()
+        const nomB = b.nom.toUpperCase()
+
+        let comparaison = 0
+        if (nomA > nomB) {
+            comparaison = 1
+        }
+        else if (nomA < nomB) {
+            comparaison = -1
+        }
+        return comparaison
+    }
+
+    for (const prop in personnesTri) {
+        let langue = personnesTri[prop].langue
+        let nom = personnesTri[prop].nom
+        if (langue in langues) {
+            str += langues[langue] + " " + nom +"<br>\n"
         }
     }
 
     return str
 }
+
