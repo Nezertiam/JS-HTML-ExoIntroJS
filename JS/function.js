@@ -220,3 +220,29 @@ function salut() {
     return str
 }
 
+
+// Exercice 13
+function moyenne(tab) {
+    let str = "les notes obtenues par l'élève sont : " + tab.join(" ") + "<br>\nSa moyenne générale est donc de : "
+    let res = 0
+    for(let i = 0; i < tab.length; i++) {
+        res += tab[i]
+    }
+    res /= tab.length
+    return str + res.toFixed(2)
+}
+
+
+// Exercice 14
+function calculAge(date) {
+    let anniversaire = new Date(date)
+    console.log(anniversaire)
+    let aujourdhui = new Date()
+    let milisec = aujourdhui.getTime() - anniversaire.getTime()
+    let ans = (milisec/365.25/24/3600/1000).toFixed(0)
+
+    return ans + " ans"
+}
+
+
+// Exercice 15
