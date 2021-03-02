@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Trombino</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <form id="form">
+            <input type="text" name="nom" placeholder="Prénom NOM"><br>
+            <input type="date" name="datenaiss">
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <a href="" id="link">Vérifier nombre de personnes</a>
+
+        <section id="personnes">
+
+        </section>
+        <div class="dispflex">
+            <a href="" id="supprAll"><span class="fas fa-fire"></span> Génocide <span class="fas fa-fire"></span></a>
+        </div>
+        
+
+    </div>
+    <script>
+        /*
+            - ajouter une image (pas dans le formulaire) dans la div.personne
+            - faire fonctionner le bouton suppr (croix rouge)
+        */
+        class Personne{
+            constructor(name, date){
+                this.name = name
+                this.date = date
+            }
+            render(){
+                let html = document.createElement("div")        //On crée un objet div qui est cash stocké dans une var html
+                html.classList.add("personne")
+                html.innerHTML = "<h1>"+ this.name + "</h1>"
+                html.innerHTML+= "<p>"+ new Date(this.date).toLocaleDateString() + "</p>"
+                html.innerHTML+= "<button class='suppr'>&times;</button>"
+                html.innerHTML+= "<img src='tenor.gif'>"
+                console.log(html)
+                html.querySelector(".suppr").addEventListener("click", function(event) {
+                    html.remove()
+            })
+                return html
+            }
+        }
+        
+        let form = document.querySelector("#form")
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault()//empèche l'event de base de se déclencher
+            
+            let name = form.querySelector("input[name='nom']")
+            let date = form.querySelector("input[name='datenaiss']")
+
+            let newPersonne = new Personne(name.value, date.value)
+            name.value = ""
+            date.value = ""
+            document.querySelector("#personnes").appendChild(newPersonne.render())
+           
+        })
+        
+        document.querySelector("#link").addEventListener("click", (event) => {
+            event.preventDefault()
+            alert("Il y a "+document.querySelectorAll(".personne").length+" personnes dans la liste")
+        })
+
+        document.querySelector("#supprAll").addEventListener("click", (event) => {
+            event.preventDefault()
+            document.querySelector("#personnes").innerHTML = ""
+        })
+
+    </script>
+</body>
+</html>

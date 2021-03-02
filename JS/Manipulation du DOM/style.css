@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#wrapper{
+    max-width: 900px;
+    margin: auto;
+}
+
+#personnes{
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.personne{
+    margin: 1em;
+    padding: 1em;
+    position: relative;
+    width: 266px;
+    border: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+.suppr{
+    background-color: red;
+    color: white;
+    font-size: 1.5em;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+}
+
+#supprAll{
+    font-size: 4em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 20px;
+    padding: 0 2em;
+    background-color: darkred;
+    text-align: center;
+}
+
+
+.dispnone{
+    display: none;
+}
+
+.dispflex{
+    display: flex;
+    justify-content: center;
+}
