@@ -4,7 +4,6 @@
         private $_nom;
         private $_prenom;
         private $_dateNaissance;
-        private $_age;
 
         // Constructeur
         public function __construct($nom = "inconnu", $prenom = "inconnu", $dateNaissance = "")
@@ -12,7 +11,6 @@
             $this->_nom = $nom;
             $this->_prenom = $prenom;
             $this->_dateNaissance = new dateTime($dateNaissance);
-            $this->_age = date_diff(new dateTime(), $this->_dateNaissance)->format("%y");
         }
 
         // Getters
@@ -24,6 +22,9 @@
         }
         public function getDateNaissance(){
             return $this->_dateNaissance->format("d-m-Y");
+        }
+        public function getAge(){
+            return date_diff(new dateTime(), $this->_dateNaissance)->format("%y");
         }
 
         // Setters
@@ -38,6 +39,6 @@
         }
 
         public function __toString() {
-            return $this->_prenom." ".$this->_nom." a ".$this->_age." ans.<br>";
+            return $this->_prenom." ".$this->_nom." a ".$this->getAge()." ans.<br>";
         }
     }
