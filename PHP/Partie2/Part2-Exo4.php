@@ -19,42 +19,64 @@
 
 <?php
 
-$capitales = array (
-    "France"=>"Paris",
-    "Allemagne"=>"Berlin",
-    "USA"=>"Washington",
-    "Italie"=>"Rome",
-    "Espagne"=>"Madrid"
-);
+    $capitales = array (
+        "France"=>"Paris",
+        "Allemagne"=>"Berlin",
+        "USA"=>"Washington",
+        "Italie"=>"Rome",
+        "Espagne"=>"Madrid"
+    );
 
-function afficherTableHTML($tab){
+    function afficherTableHTML($tab){
+        ksort($tab);
 
-    ksort($tab);
+        $str = "
+            <table>
+                <thead>
+                    <tr>
+                        <th style='border:1px solid black;'>
+                            <b> PAYS </b>
+                        </th>
+                        <th style='border:1px solid black;'>
+                            <b> CAPITALE </b>
+                        </th>
+                        <th style='border:1px solid black;'>
+                            <b> LIEN </b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+        ";
 
-    $str = "<div style='display:flex; width:30em;'>"; 
-    $str.= "<div style='flex:1; border:1px solid black;'><b>PAYS</b></div>";  
-    $str.= "<div style='flex:1; border:1px solid black;'><b>CAPITALE</b></div>"; 
-    $str.= "<div style='flex:1; border:1px solid black;'><b>Lien Wiki</b></div>"; 
-    $str.= "</div>";
+        foreach($tab as $pays => $ville){
+            $str.= "
+                    <tr>
+                        <td style='border:1px solid black;'>
+                            $pays
+                        </td>
+                        <td style='border:1px solid black;'>
+                            $ville
+                        </td>
+                        <td style='border:1px solid black;'>
+                            <a href='https://fr.wikipedia.org/wiki/".wiki($ville)."'>Lien</a>
+                        </td>
+                    </tr>
+            ";
+        }
 
-    foreach($tab as $pays => $ville){
-        $str.= "<div style='display:flex; width:30em;'>"; // Crée une div pour chaque couple afin de les afficher en ligne
-        $str.= "<div style='flex:1; border:1px solid black;'>".mb_strtoupper($pays)."</div>";   // crée une div à gauche pour le Pays
-        $str.= "<div style='flex:1; border:1px solid black;'>".$ville."</div>";
-        $str.= "<div style='flex:1; border:1px solid black;'><a href='https://fr.wikipedia.org/wiki/".wiki($ville)."' target='_blank'>Lien</a></div>";                    // crée une div à droite pour la ville
-        $str.= "</div>";    // ferme la div qui regroupe le couple
+        $str.= "
+                </tbody>
+            </table>
+        ";
+        return $str;
+
     }
-    
-    $str.= "</div>";
-    return $str;
-}
 
-function wiki($ville){
-    switch($ville){
-        case "Washington": return $ville."_(district_de_Columbia)"; break;
-        default : return $ville;
+    function wiki($ville){
+        switch($ville){
+            case "Washington" : return $ville."_(district_de_Columbia)"; break;
+            default : return $ville;
+        }
     }
-    
-}
 
-echo afficherTableHTML($capitales);
+    echo afficherTableHTML($capitales);

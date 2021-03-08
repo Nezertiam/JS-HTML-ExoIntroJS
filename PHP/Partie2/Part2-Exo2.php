@@ -26,19 +26,38 @@
     function afficherTableHTML($tab){
         ksort($tab);
 
-        $str = "<div style='width:30em'>";
-        $str.= "<div style='display:flex; width:100%;'>"; 
-        $str.= "<div style='flex:1; border:1px solid black;'><b>PAYS</b></div>";  
-        $str.= "<div style='flex:1; border:1px solid black;'><b>CAPITALE</b></div>";                 
-        $str.= "</div>";
+        $str = "
+            <table>
+                <thead>
+                    <tr>
+                        <th style='border:1px solid black;'>
+                            <b> PAYS </b>
+                        </th>
+                        <th style='border:1px solid black;'>
+                            <b> CAPITALE </b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+        ";
 
         foreach($tab as $pays => $ville){
-            $str.= "<div style='display:flex; width:100%;'>"; // Crée une div pour chaque couple afin de les afficher en ligne
-            $str.= "<div style='flex:1; border:1px solid black;'>".mb_strtoupper($pays)."</div>";   // crée une div à gauche pour le Pays
-            $str.= "<div style='flex:1; border:1px solid black;'>".$ville."</div>";                 // crée une div à droite pour la ville
-            $str.= "</div>";    // ferme la div qui regroupe le couple
+            $str.= "
+                    <tr>
+                        <td style='border:1px solid black;'>
+                            $pays
+                        </td>
+                        <td style='border:1px solid black;'>
+                            $ville
+                        </td>
+                    </tr>
+            ";
         }
-        $str.= "</div>";
+
+        $str.= "
+                </tbody>
+            </table>
+        ";
         return $str;
     }
 
