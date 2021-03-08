@@ -14,20 +14,27 @@
 
 <?php
 
-    $nomsInput = ["Nom", "Prénom", "Ville"];
+    $nomsInput = [
+        "nom" => "Nom", 
+        "prenom" => "Prénom", 
+        "ville" => "Ville"
+    ];
     
-    function afficherInput($tabNomsInput){
+    function genererInput($tabNomsInput){
         $str = "<form style='width:30%; display:block; background-color:lightgrey; padding-left:0.5em; padding-bottom: 1em; padding-top: 0.5em;'>";
 
-        foreach($tabNomsInput as $label){
-            $str.= "<div style='display:flex; flex-direction:column; width:70%;'>";
-            $str.= "<label for='".strtolower($label)."'>".$label."</label>";
-            $str.= "<input type='text' id='".strtolower($label)."'>";
-            $str.= "</div>";
+        foreach($tabNomsInput as $label => $affichage){
+            $str.= "
+                    <div style='display:flex; flex-direction:column; width:70%;'>
+                        <label for='".strtolower($label)."'>".$affichage."</label>
+                        <input type='text' id='".strtolower($label)."'>
+                    </div>
+            ";
         }
-
-        $str.= "</form>";
+        $str.= "
+                </form>
+        ";
         return $str;
     }
 
-    echo afficherInput($nomsInput);
+    echo genererInput($nomsInput);

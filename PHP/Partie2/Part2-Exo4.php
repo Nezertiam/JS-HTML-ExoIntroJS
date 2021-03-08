@@ -51,8 +51,8 @@
         foreach($tab as $pays => $ville){
             $str.= "
                     <tr>
-                        <td style='border:1px solid black;'>
-                            $pays
+                        <td style='border:1px solid black;'>".
+                            mb_strtoupper($pays)."
                         </td>
                         <td style='border:1px solid black;'>
                             $ville
