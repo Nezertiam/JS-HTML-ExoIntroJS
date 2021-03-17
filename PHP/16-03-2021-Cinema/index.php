@@ -52,10 +52,10 @@
 
 
         // On instancie ensuite les films (préfixe film-) car ces derniers ont besoin d'un réalisateur déjà instancié.
-        $filmElysium = new Film("Elysium", "2013", "105", $reaNeillBlomkamp, $sf);
-        $filmChappie = new Film("Chappie", "2015", "120", $reaNeillBlomkamp, $sf);
-        $filmGoldenEye = new Film("Golden Eye", "1995", "130", $reaMartinCampbell, $espionnage);
-        $film007Spectre = new Film("007 Spectre", "2015", "150", $reaSamMendes, $espionnage);
+        $filmElysium = new Film("Elysium", 2013, 105, $reaNeillBlomkamp, $sf);
+        $filmChappie = new Film("Chappie", 2015, 120, $reaNeillBlomkamp, $sf);
+        $filmGoldenEye = new Film("Golden Eye", 1995, 130, $reaMartinCampbell, $espionnage);
+        $film007Spectre = new Film("007 Spectre", 2015, 150, $reaSamMendes, $espionnage);
         echo $reaNeillBlomkamp->afficherFilms();
         echo $filmElysium->afficherCasting();
         echo "---------------------------------------------";
@@ -85,7 +85,7 @@
         echo "<br>";
         echo "<br>";
         echo "---------- TEST PRODUITS FINIS --------------<br><br>";
-        
+
         echo $filmElysium->afficherCasting();
         echo $filmChappie->afficherCasting();
         echo $personnageChappie->afficherActeurs();
@@ -93,6 +93,8 @@
         echo $sf->afficherParGenre();
         echo $espionnage->afficherParGenre();
         echo $actSharltoCopley->afficherFilms();
+        echo $film007Spectre->getDuree();
+        echo $film007Spectre->afficherInfos();
     ?>
 
     </section>
